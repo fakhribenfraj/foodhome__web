@@ -13,7 +13,7 @@ const Logo = () => {
         height={40}
         className="object-contain"
       />
-      <h1>Food House</h1>
+      <h1 className="text-xl">Food House</h1>
     </div>
   );
 };
