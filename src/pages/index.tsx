@@ -1,7 +1,8 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Banner from "../Components/Banner";
-import { SmallCard, MediumCard } from "../Components/Card";
+import { SmallCard, MediumCard, LargeCard } from "../Components/Card";
+import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 
 const Home: NextPage = ({ exploreData, cardsData }: any) => {
@@ -36,7 +37,14 @@ const Home: NextPage = ({ exploreData, cardsData }: any) => {
             ))}
           </div>
         </section>
+        <LargeCard
+          img="https://links.papareact.com/4cj"
+          title="The Greatest Outdoors"
+          description="Wishlists curated by Airbnb."
+          buttonText="Get Inspired"
+        />
       </main>
+      <Footer/>
     </div>
   );
 };
@@ -45,9 +53,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     "https://635e5e2003d2d4d47aed2843.mockapi.io/api/v1/locations"
   ).then((res) => res.json());
 
-  const cardsData = await fetch("https://635e5e2003d2d4d47aed2843.mockapi.io/api/v1/places").then((res) =>
-    res.json()
-  );
+  const cardsData = await fetch(
+    "https://635e5e2003d2d4d47aed2843.mockapi.io/api/v1/places"
+  ).then((res) => res.json());
 
   return {
     props: {
