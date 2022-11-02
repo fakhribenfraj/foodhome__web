@@ -7,7 +7,7 @@ const Banner = () => {
         src="/banner.jpg"
         alt="banner"
         fill
-        className="object-cover"
+        className="object-cover origin-bottom"
       />
       <div className="group absolute w-full bg-transparent text-center top-[60%]">
         <p className="text-sm sm:text-3xl bg-transparent text-white">
