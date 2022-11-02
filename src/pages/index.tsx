@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Banner from "../Components/Banner";
-import SmallCard from "../Components/Card";
+import { SmallCard, MediumCard } from "../Components/Card";
 import Navbar from "../Components/Navbar";
 
 const Home: NextPage = ({ exploreData, cardsData }: any) => {
@@ -28,21 +28,31 @@ const Home: NextPage = ({ exploreData, cardsData }: any) => {
             ))}
           </div>
         </section>
+        <section>
+          <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
+          <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
+            {cardsData?.map(({ img, title }: any) => (
+              <MediumCard key={img} img={img} title={title} />
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
 };
 export const getStaticProps: GetStaticProps = async (context) => {
-  const exploreData = await fetch("https://635e5e2003d2d4d47aed2843.mockapi.io/api/v1/locations").then((res) => res.json());
+  const exploreData = await fetch(
+    "https://635e5e2003d2d4d47aed2843.mockapi.io/api/v1/locations"
+  ).then((res) => res.json());
 
-  // const cardsData = await fetch("https://links.papareact.com/zp1").then((res) =>
-  //   res.json()
-  // );
+  const cardsData = await fetch("https://635e5e2003d2d4d47aed2843.mockapi.io/api/v1/places").then((res) =>
+    res.json()
+  );
 
   return {
     props: {
       exploreData,
-      // cardsData,
+      cardsData,
     },
   };
 };

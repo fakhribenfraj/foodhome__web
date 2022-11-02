@@ -2,10 +2,11 @@ import Image from "next/image";
 
 type CardProps = {
   img: string;
-  location: string;
-  distance: string;
+  title?: string;
+  location?: string;
+  distance?: string;
 };
-function SmallCard({ img, location, distance }:CardProps) {
+function SmallCard({ img, location, distance }: CardProps) {
   return (
     <div
       className="flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer 
@@ -23,4 +24,15 @@ function SmallCard({ img, location, distance }:CardProps) {
   );
 }
 
-export default SmallCard;
+function MediumCard({ img, title }: CardProps) {
+  return (
+    <div className="cursor-pointer hover:scale-105 transform transition duration-300 ease-out">
+      <div className="relative h-80 w-80">
+        <Image src={img} fill alt="" className="rounded-xl" />
+      </div>
+      <h3 className="text-2xl mt-3">{title}</h3>
+    </div>
+  );
+}
+
+export { SmallCard, MediumCard };
